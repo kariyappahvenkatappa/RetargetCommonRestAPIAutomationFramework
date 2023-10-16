@@ -1,3 +1,9 @@
+package airlines;
+
+import utils.DateUtils;
+import utils.RandomDataGenerator;
+import utils.RandomDataTypeNames;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,6 +34,19 @@ public class Payloads {
         payload.put("head_quaters", head_quaters);
         payload.put("website", website);
         payload.put("established", established);
+        return payload;
+    }
+
+    public static Map<String, Object> getCreateAirlinePayloadFromMap() {
+        Map<String, Object> payload = new HashMap<>();
+        payload.put("id", RandomDataGenerator.getRandomNumber(10));
+        payload.put("name", RandomDataGenerator.getRandomDataFor(RandomDataTypeNames.FIRSTNAME));
+        payload.put("country", RandomDataGenerator.getRandomDataFor(RandomDataTypeNames.COUNTRY));
+        payload.put("logo", RandomDataGenerator.getRandomAlphabets(25));
+        payload.put("slogan", RandomDataGenerator.getRandomAlphabets(20));
+        payload.put("head_quaters", RandomDataGenerator.getRandomDataFor(RandomDataTypeNames.CITYNAME));
+        payload.put("website", RandomDataGenerator.getRandomWebsiteName());
+        payload.put("established", RandomDataGenerator.getRandomNumber(1900, DateUtils.getCurrentYear()));
         return payload;
     }
 }
